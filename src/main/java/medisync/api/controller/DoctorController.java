@@ -42,6 +42,12 @@ public class DoctorController {
         doctor.updateInfo(data);
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void delete(@PathVariable Long id){
+        repository.deleteById(id);
+    }
+
 
 
 }
