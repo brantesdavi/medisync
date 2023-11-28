@@ -9,7 +9,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Medisyn API</h3>
@@ -133,6 +133,8 @@ Example Response
 ## Contact
 
 Davi Brantes  - davi.brantes@gmail.com
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
