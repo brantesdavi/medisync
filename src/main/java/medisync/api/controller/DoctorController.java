@@ -27,7 +27,7 @@ public class DoctorController {
 
     @GetMapping
     public Page<DoctorListData> list(Pageable pageable) {
-        return repository.findAll(pageable).map(DoctorListData::new);
+        return repository.findAllByActiveTrue(pageable).map(DoctorListData::new);
     }
 
     /*@GetMapping
@@ -45,8 +45,11 @@ public class DoctorController {
     @DeleteMapping("/{id}")
     @Transactional
     public void delete(@PathVariable Long id){
-        repository.deleteById(id);
+        var doctor = repository.getReferenceById(id);
+        doctor.exclude();
     }
+
+
 
 
 
