@@ -1,7 +1,7 @@
-package medisync.api.doctor;
+package medisync.api.domain.doctor;
 
 import jakarta.validation.constraints.NotNull;
-import medisync.api.address.AddressData;
+import medisync.api.domain.address.AddressData;
 
 public record DoctorUpdateData(
         @NotNull

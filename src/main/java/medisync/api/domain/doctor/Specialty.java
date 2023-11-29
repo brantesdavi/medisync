@@ -1,4 +1,4 @@
-package medisync.api.doctor;
+package medisync.api.domain.doctor;
 
 public enum Specialty {
 

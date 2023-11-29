@@ -1,4 +1,4 @@
-package medisync.api.doctor;
+package medisync.api.domain.doctor;
 
 public record DoctorListData(Long id, String name, String email, String npi, Specialty specialty) {
 

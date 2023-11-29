@@ -1,6 +1,6 @@
-package medisync.api.doctor;
+package medisync.api.domain.doctor;
 
-import medisync.api.address.Address;
+import medisync.api.domain.address.Address;
 
 public record DoctorDetailData(Long id, String name, String email, String phone, String npi, Specialty specialty, Address address) {
 

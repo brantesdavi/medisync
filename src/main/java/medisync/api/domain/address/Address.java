@@ -1,4 +1,4 @@
-package medisync.api.address;
+package medisync.api.domain.address;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

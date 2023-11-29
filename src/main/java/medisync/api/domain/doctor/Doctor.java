@@ -1,11 +1,11 @@
-package medisync.api.doctor;
+package medisync.api.domain.doctor;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import medisync.api.address.Address;
+import medisync.api.domain.address.Address;
 
 @Table(name = "doctors")
 @Entity(name = "doctor")

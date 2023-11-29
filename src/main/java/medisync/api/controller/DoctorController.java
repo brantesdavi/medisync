@@ -2,17 +2,16 @@ package medisync.api.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import medisync.api.address.Address;
-import medisync.api.doctor.*;
+import medisync.api.domain.doctor.*;
+import medisync.api.domain.doctor.Doctor;
+import medisync.api.domain.doctor.DoctorListData;
+import medisync.api.domain.doctor.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.List;
 
 /**
  * Controlador para manipulação de dados de médicos
@@ -94,9 +93,4 @@ public class DoctorController {
         var doctor = repository.getReferenceById(id);
         return ResponseEntity.ok(new DoctorDetailData(doctor));
     }
-
-
-
-
-
 }
