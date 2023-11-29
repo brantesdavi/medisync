@@ -60,7 +60,7 @@ public class DoctorController {
         var doctor = repository.getReferenceById(id);
         doctor.exclude();
 
-        //retorna cod 204
+        //retorna codigo 204
         return ResponseEntity.noContent().build();
     }
 
