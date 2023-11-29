@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -21,13 +23,20 @@ public class DoctorController {
 
     @PostMapping
     @Transactional
-    public void register(@RequestBody @Valid DoctorRegistrationData data){
-        repository.save(new Doctor(data));
+    public ResponseEntity register(@RequestBody @Valid DoctorRegistrationData data, UriComponentsBuilder uriBuilder){
+        var doctor = new Doctor(data);
+        repository.save(doctor);
+
+        var uri = uriBuilder.path("/doctors/{id}").buildAndExpand(doctor.getId()).toUri();
+
+        //Devolve cod 201, cabeçalho com a uri e no coprpo da resposta o recurso criado
+        return ResponseEntity.created(uri).body(new DoctorDetailData(doctor));
     }
 
     @GetMapping
-    public Page<DoctorListData> list(Pageable pageable) {
-        return repository.findAllByActiveTrue(pageable).map(DoctorListData::new);
+    public ResponseEntity<Page<DoctorListData>> list(Pageable pageable) {
+        var page =  repository.findAllByActiveTrue(pageable).map(DoctorListData::new);
+        return ResponseEntity.ok(page);
     }
 
     /*@GetMapping
@@ -37,16 +46,22 @@ public class DoctorController {
 
     @PutMapping
     @Transactional
-    public void update(@RequestBody @Valid DoctorUpdateData data){
+    public ResponseEntity update(@RequestBody @Valid DoctorUpdateData data){
         var doctor = repository.getReferenceById(data.id());
         doctor.updateInfo(data);
+
+        //Retorna cod 200 e objeto corpo da resposta com os dados atualizados
+        return ResponseEntity.ok(new DoctorDetailData(doctor));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void delete(@PathVariable Long id){
+    public ResponseEntity delete(@PathVariable Long id){
         var doctor = repository.getReferenceById(id);
         doctor.exclude();
+
+        //retorna cod 204
+        return ResponseEntity.noContent().build();
     }
 
 
