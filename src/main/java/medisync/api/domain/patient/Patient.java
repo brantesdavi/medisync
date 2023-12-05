@@ -27,6 +27,10 @@ public class Patient {
     private Address address;
     private Boolean active;
 
+    public Long getId() {
+        return this.id;
+    }
+
     public Patient(PatientRegistrationData data){
         this.active=true;
         this.name = data.name();
