@@ -1,4 +1,4 @@
 package medisync.api.domain.user;
 
-public class AuthData {
+public record AuthData(String login, String password){
 }
