@@ -3,6 +3,7 @@ package medisync.api.controller;
 import jakarta.validation.Valid;
 import medisync.api.domain.user.AuthData;
 import medisync.api.domain.user.User;
+import medisync.api.infra.security.TokenJWTData;
 import medisync.api.infra.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +26,12 @@ public class AuthController {
 
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid AuthData data){
-        var token = new UsernamePasswordAuthenticationToken(data.login(), data.password());
-        var auth =  manager.authenticate(token);
+        var authToker = new UsernamePasswordAuthenticationToken(data.login(), data.password());
+        var auth =  manager.authenticate(authToker);
 
-        return ResponseEntity.ok(tokenService.generateToken((User) auth.getPrincipal()));
+        var tokenJWT = tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new TokenJWTData(tokenJWT));
     }
 
 }
