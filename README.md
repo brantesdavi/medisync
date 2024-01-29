@@ -97,11 +97,17 @@ The API provides the following endpoints:
 * /doctors: CRUD for doctors.
 * /patients: CRUD for patients.
 * /appointments: CRUD for appointments.
+* /user: Login to use the application
+
+### Authentication
+
+To perform any operation other than login, it is necessary to include an authentication token in the request header.
 
 ## Examples
 
 #Retrieving Doctors
 ```sh
+  Authorization: YOUR_TOKEN_HERE
   GET http://localhost:8080/doctors
 ```
 
@@ -115,6 +121,97 @@ Example Response
     "specialty": "CARDIOPEDIA"
   }
 ```
+### Retrieving Doctor Details
+
+To retrieve details for a specific doctor, include the doctor's ID in the endpoint URL and provide the authentication token in the request header.
+
+#### Example Request
+
+```sh
+Authorization: YOUR_TOKEN_HERE
+GET http://localhost:8080/doctors/9
+```
+
+Example Response
+```js
+  {
+    {
+    "id": 1,
+    "name": "Gabriel",
+    "email": "gabriel.ianess@sync.med",
+    "phone": "12345678",
+    "npi": "123454",
+    "specialty": "CARDIOPEDIA",
+    "address": {
+        "street": "rua 1",
+        "district": "bairro",
+        "zip": "12345678",
+        "city": "Brasilia",
+        "state": "DF",
+        "complement": "complemento",
+        "number": "1"
+    }
+}
+  }
+```
+
+### Registering a New Doctor
+
+To register a new doctor, use the following endpoint with the appropriate authentication token and provide the necessary details in the request body.
+
+#### Example Request
+
+```sh
+Authorization: YOUR_TOKEN_HERE
+POST http://localhost:8080/doctors
+```
+
+Payload body
+```js
+  {
+    {
+    "id": 1,
+    "name": "Gabriel",
+    "email": "gabriel.ianess@sync.med",
+    "phone": "12345678",
+    "npi": "123454",
+    "specialty": "CARDIOPEDIA",
+    "address": {
+        "street": "rua 1",
+        "district": "bairro",
+        "zip": "12345678",
+        "city": "Brasilia",
+        "state": "DF",
+        "complement": "complemento",
+        "number": "1"
+    }
+}
+  }
+```
+Example Response
+```js
+  {
+    {
+    "id": 1,
+    "name": "Gabriel",
+    "email": "gabriel.ianess@sync.med",
+    "phone": "12345678",
+    "npi": "123454",
+    "specialty": "CARDIOPEDIA",
+    "address": {
+        "street": "rua 1",
+        "district": "bairro",
+        "zip": "12345678",
+        "city": "Brasilia",
+        "state": "DF",
+        "complement": "complemento",
+        "number": "1"
+    }
+}
+  }
+```
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
