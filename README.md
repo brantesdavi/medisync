@@ -12,7 +12,7 @@
     <img src="images/logo.svg" alt="Logo" width="200" height="200">
   </a>
 
-  <h3 align="center">Medisyn API</h3>
+  <h3 align="center">Medisync API</h3>
 
   <p align="center">
     An awesome API for the Medisync application!
